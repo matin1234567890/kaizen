@@ -1,0 +1,251 @@
+@font-face {
+  font-family: "IRANSans";
+  src: url("./Iranian Sans.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Vazir";
+  src: url("./Vazir-Bold.ttf") format("truetype");
+}
+
+:root {
+  --coffee: #6b3e26;
+  --cream: #f9f5ef;
+  --beige: #ead7c3;
+  --caramel: #d08a4b;
+  --text-dark: #3a2317;
+
+  --dark-bg: #12100e;
+  --dark-card: #2a2724;
+  --dark-soft: #1c1917;
+  --dark-border: #3a2f28;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body {
+  font-family: "IRANSans","Vazir",sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg,#140f0c,#0c0907);
+  color: var(--cream);
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  background: var(--dark-soft);
+  margin: 12px;
+  padding: 16px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+  border:1px solid var(--dark-border);
+}
+
+.logo-img {
+  width: 120px;
+  margin-bottom: 6px;
+  filter: brightness(1.2) drop-shadow(0 6px 14px rgba(0,0,0,.5));
+}
+
+.tagline {
+  color: var(--caramel);
+  font-size: 14px;
+}
+
+/* LAYOUT */
+.layout{
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+/* CATEGORIES */
+.categories {
+  width: 90px;
+  background: var(--dark-soft);
+  border-radius: 18px;
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  border:1px solid var(--dark-border);
+}
+
+.category-btn {
+  background: var(--dark-card);
+  color: var(--cream);
+  border-radius: 14px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .25s;
+  text-align:center;
+  padding: 6px;
+  border:1px solid var(--dark-border);
+}
+
+.category-btn.active{
+  background: var(--coffee);
+  color: var(--cream);
+  box-shadow: 0 0 0 2px rgba(208,138,75,.4);
+}
+
+/* PRODUCTS */
+.products {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* PRODUCT CARD */
+.product-card {
+  background: var(--dark-card);
+  border-radius: 22px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border:1px solid var(--dark-border);
+  box-shadow: 0 10px 25px rgba(0,0,0,.5);
+  transition: .25s;
+  flex-direction: row;
+}
+
+.product-card:active{
+  transform: scale(.98);
+}
+
+/* IMAGE BOX */
+.product-img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 18px;
+  flex-shrink:0;
+}
+
+/* INFO */
+.product-info{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.product-name {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--cream);
+}
+
+.product-desc {
+  font-size: 12px;
+  color: #c9b9ac;
+}
+
+.divider{
+  height:1px;
+  width:100%;
+  background: linear-gradient(to right, transparent, var(--caramel), transparent);
+  margin:6px 0;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--caramel);
+  text-align: left;
+}
+
+/* EXPANDED */
+.product-card.expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 50;
+  width: 85%;
+  max-width: 340px;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 40px 90px rgba(0,0,0,.8);
+}
+
+.product-card.expanded .product-img{
+  width: 160px;
+  height: 160px;
+}
+
+/* OVERLAY */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s;
+  z-index:40;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* FOOTER */
+.footer-box {
+  margin: 25px 0 20px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.location-box,
+.instagram-box {
+  background: var(--dark-soft);
+  padding: 12px 18px;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.5);
+  border:1px solid var(--dark-border);
+}
+
+.location-box svg {
+  width: 22px;
+  fill: var(--caramel);
+}
+
+.instagram-box img {
+  width: 24px;
+}
+
+/* MOBILE */
+@media (max-width:600px){
+  .layout{
+    flex-direction: column;
+  }
+
+  .categories{
+    flex-direction: row;
+    width: 100%;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .category-btn{
+    min-width: 90px;
+    height: 60px;
+  }
+}
